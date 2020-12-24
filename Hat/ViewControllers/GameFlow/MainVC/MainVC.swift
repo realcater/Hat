@@ -114,10 +114,12 @@ extension MainVC {
         return (mode != .offline) && (game.prevTeller?.id == Auth().id)
     }
     var isTeller: Bool {
-        return game.currentTeller?.id == Auth().id
+        let myID = Auth().id
+        return (game.currentTeller?.id == myID) && (myID != nil)
     }
     var isListener: Bool {
-        return game.currentListener.id == Auth().id
+        let myID = Auth().id
+        return (game.currentListener.id == myID) && (myID != nil)
     }
     func coloriseBarView() {
         switch (isTeller, isListener) {
